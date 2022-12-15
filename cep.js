@@ -3,8 +3,8 @@ function criarElementoResultadoSucesso(value) {
     result.innerHTML= ""
     if(!!value.cep){
         for (const property in value) {
-            result.insertAdjacenthtml("beforeend"
-            `<li> ${property}: ${value[property]}<li/>`
+            result.insertAdjacentHTML("beforeend",
+            `<li style=" background-color: orange ; padding: 5px; display: flex; color: black; font-weight: bolder;"> ${property}: ${value[property]}</li>`
             )
         }
     } else {
@@ -28,14 +28,14 @@ function pesquisaCep(cep) {
 }
 
 const form = document.querySelector("form")
-const inputCEP = document.querySelector('#cep')
+const inputCEP = document.querySelector("#cep")
 
 form.addEventListener("submit", function(e) {
     e.preventDefault()
-    const cep = inputCEP.value.replace(/\G/g, "")
-    if (/^[0-9]{8}$/.test(cep)){
+    const cep = inputCEP.value.replace(/\G/g, '')
+    if (/^[0-9]{8}$/.test(cep)) {
         pesquisaCep(cep)
     } else {
-        criarElementoResultadoErro("CEP inválido!!!")
+        criarElementoResultadoErro("CEP inválido!")
     }
 })
